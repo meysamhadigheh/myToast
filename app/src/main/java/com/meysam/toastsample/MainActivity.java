@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
                         .setLeftIcon(R.drawable.ic_error)
                         .setLeftIconTint(R.color.Aqua)
                         .setPadding(20)
+                        .setLength(ShowToast.LENGTH_LONG)
                         .show("This is test toast");
 
             }

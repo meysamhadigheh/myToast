@@ -19,12 +19,17 @@ public class ShowToast {
 
     Context context;
     Integer drawableRight, drawableLeft;
-    String typefaceName;
     Integer color, background;
     Integer rightIconTint, leftIconTint;
     Integer padding;
+    Integer length;
+    String typefaceName;
 
     ConstraintLayout mainLayout;
+
+    public static final int LENGTH_SHORT = 0;
+    public static final int LENGTH_LONG = 1;
+
 
 
     private ShowToast(Context context) {
@@ -104,7 +109,13 @@ public class ShowToast {
 
         Toast toast = new Toast(context);
         toast.setGravity(Gravity.BOTTOM, 0, ViewUIHelper.dpToPx(110));
-        toast.setDuration(Toast.LENGTH_SHORT);
+
+       if(length!=null){
+           toast.setDuration(length);
+       }else {
+           toast.setDuration(Toast.LENGTH_SHORT);
+       }
+
         toast.setView(layout);
         toast.show();
     }
@@ -148,6 +159,11 @@ public class ShowToast {
 
     public ShowToast setPadding(Integer padding) {
         this.padding = padding;
+        return this;
+    }
+
+    public ShowToast setLength(Integer length){
+        this.length=length;
         return this;
     }
 
